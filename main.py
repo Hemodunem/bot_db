@@ -10,9 +10,10 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS activities
 (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER UNIQUE, text_amount INTEGER, reaction_amount INTEGER, has_role INTEGER)""")
 
+#Заносим пользователя в базу
+
 cursor.executemany("""
 INSERT INTO activities (user_id, text_amount, reaction_amount, has_role) VALUES (?,?,?,?);
-
 """, [
     (1,0,0,0),
     (2,60,0,1),
