@@ -6,11 +6,14 @@ cursor = conn.cursor()
 
 cursor.execute("DROP TABLE activities")
 
+#Заменить has_role в таблице
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS activities
 (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER UNIQUE, text_amount INTEGER, reaction_amount INTEGER, has_role INTEGER)""")
 
 #Заносим пользователя в базу
+#on_message добавляем в текстовую активность
 
 cursor.executemany("""
 INSERT INTO activities (user_id, text_amount, reaction_amount, has_role) VALUES (?,?,?,?);
